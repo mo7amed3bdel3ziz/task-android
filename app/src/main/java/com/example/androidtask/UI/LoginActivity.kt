@@ -27,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
       //  viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.goSignup.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
             finish()
         }
