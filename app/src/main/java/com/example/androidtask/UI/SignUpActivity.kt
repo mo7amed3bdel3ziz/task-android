@@ -44,13 +44,12 @@ class SignUpActivity : AppCompatActivity() {
                         RegisterRequestModel(
                             binding.nameID.text.toString(),
                             binding.emailID.text.toString(),
-                            binding.passwordID.text.toString().toInt(),
-                            binding.phoneID.text.toString().toInt(),
+                            binding.passwordID.text.toString(),
+                            binding.phoneID.text.toString(),
                             androidId
                             // "anas.akid7@gmail.com",
                             //  12345678,
                             //"12233454566787877"
-
                         )
                     ).collect {
 
@@ -62,6 +61,14 @@ class SignUpActivity : AppCompatActivity() {
                             is State.Success -> {
                                 if (it.data.response_code ==200){
                                     Toast.makeText(applicationContext, it.data.message, Toast.LENGTH_SHORT).show()
+                                    val intent =
+                                        Intent(this@SignUpActivity, MainActivity::class.java)
+                                            .apply {
+                                                putExtra("token", it.data.data.token)
+                                                putExtra("username", it.data.data.name)
+                                            }
+                                    startActivity(intent)
+                                    finish()
 
                                 }
                                 else

@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.example.androidtask.business.models.HomeModel" />
+            type="com.example.androidtask.business.models.CaregoryItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -28,7 +28,8 @@
                 android:scaleType="fitXY"
                 android:id="@+id/mainImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                />
 
             <TextView
                 android:id="@+id/title"
@@ -37,9 +38,9 @@
                 android:layout_margin="16dp"
                 android:layout_marginBottom="16dp"
                 android:padding="8dp"
-                android:text="title"
+                android:text="@{String.valueOf(data.name)}"
                 android:textAlignment="textEnd"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

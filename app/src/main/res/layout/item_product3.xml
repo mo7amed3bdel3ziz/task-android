@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="data"
+            type="com.example.androidtask.business.models.DataHomeModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="200dp"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         app:cardElevation="1dp"
         app:cardMaxElevation="1dp"
@@ -19,119 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="16dp"
-                android:elevation="1dp"
-                android:numStars="5"
-                android:progressBackgroundTintMode="@color/gray"
-
-                android:theme="@style/RatingBar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/btnFavorite"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="8dp"
-                android:background="@drawable/bg_circle"
-                android:elevation="1dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_favorite_border2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/header_online"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:drawableStart="@drawable/ic_outline_online_prediction_24"
-                android:drawablePadding="4dp"
-                android:elevation="1dp"
-                android:text="on_line"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/mainImage"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/header_onShop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:drawableStart="@drawable/ic_car"
-                android:drawablePadding="4dp"
-                android:elevation="1dp"
-                android:text="on_shop"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/mainImage"
-                app:layout_constraintStart_toEndOf="@id/header_online" />
-
             <ImageView
                 android:id="@+id/mainImage"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="155dp"
                 android:scaleType="fitXY"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:text="title"
-                android:textAlignment="textStart"
-                android:textColor="@color/gray1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mainImage"
-                />
 
-            <TextView
-                android:id="@+id/subtitle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:text="title"
-                android:textAlignment="textStart"
-                android:textColor="@color/gray1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mainImage" />
-
-            <TextView
-                android:id="@+id/subTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:paddingHorizontal="8dp"
-                android:text="sub_title"
-                android:textAlignment="textStart"
-                android:textColor="@color/gray1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title" />
-
-            <TextView
-                android:id="@+id/favoriteCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_favorite_gray"
-                android:drawablePadding="4dp"
-                android:elevation="1dp"
-                android:text="200"
-                android:textColor="@color/gray"
-                app:layout_constraintBottom_toBottomOf="@id/subTitle"
-                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

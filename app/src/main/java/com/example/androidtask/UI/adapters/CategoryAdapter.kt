@@ -1,18 +1,22 @@
 package com.example.androidtask.UI.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.androidtask.R
-import com.example.androidtask.business.models.HomeModel
+import com.example.androidtask.business.models.CaregoryItem
+import com.example.androidtask.business.models.Categories
+import com.example.androidtask.business.models.DataHomeModel
 import com.example.androidtask.databinding.ItemProductBinding
+import com.squareup.picasso.Picasso
 
-class CategoryAdapter ():
-    ListAdapter<HomeModel, CategoryViewHolder>(DiffCallback) {
-
+class CategoryAdapter() :
+    ListAdapter<CaregoryItem, CategoryViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding = DataBindingUtil.inflate<ItemProductBinding>(
             LayoutInflater.from(parent.context), R.layout.item_product, parent, false
@@ -22,30 +26,31 @@ class CategoryAdapter ():
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         getItem(position)?.let {
-            holder.bind(it) }
-//        holder.itemView.setOnClickListener {
-//            getItem(position)?.let { it1 -> onClickListener.onClick(it1) }
-//        }
+            holder.bind(it)
+        }
 
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<HomeModel>() {
-        override fun areItemsTheSame(oldItem: HomeModel, newItem: HomeModel): Boolean {
+
+    companion object DiffCallback : DiffUtil.ItemCallback<CaregoryItem>() {
+        override fun areItemsTheSame(oldItem: CaregoryItem, newItem: CaregoryItem): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: HomeModel, newItem: HomeModel): Boolean {
+        override fun areContentsTheSame(oldItem: CaregoryItem, newItem: CaregoryItem): Boolean {
             return oldItem.id == newItem.id
         }
     }
-
-
 }
 
 class CategoryViewHolder(private var binding: ItemProductBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(Item: HomeModel) {
-        binding.data = Item
+    fun bind(item: CaregoryItem) {
+        binding.data = item
+// Load image using Glide as a test
+        Glide.with(binding.root.context)
+            .load(item.image)
+            .into(binding.mainImage)
         binding.executePendingBindings()
     }
 }

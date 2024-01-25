@@ -1,8 +1,9 @@
 package com.example.androidtask.business.models
 
-data class HomeModel(
+data class HomeModel<T>(
 
-    // API not work to get response
-
-    var id        : Int
+  var success      : Boolean        ,
+  var response_code : Int           ,
+  var message      : String         ,
+  var data         : ArrayList<T> = arrayListOf()
 )

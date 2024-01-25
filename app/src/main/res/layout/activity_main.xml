@@ -6,6 +6,7 @@
     <data>
 
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,18 +25,25 @@
                 android:layout_width="?actionBarSize"
                 android:layout_height="?actionBarSize"
                 android:padding="5dp"
-                android:src="@drawable/ic_baseline_search_24" />
+                android:src="@drawable/back" />
 
             <TextView
+                android:id="@+id/homeTXt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="29dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="Home"
                 android:textColor="@color/black"
-                android:gravity="center"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/shopping"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:padding="12dp"
+                android:src="@drawable/ic_car" />
 
             <ImageView
                 android:id="@+id/search"
@@ -46,95 +54,117 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <androidx.cardview.widget.CardView
+            android:id="@+id/infoCardID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="?actionBarSize"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/topBar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constrainttopBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/container1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                app:layout_constraintTop_toBottomOf="@id/constrainttopBar">
 
                 <TextView
-                    android:id="@+id/header1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:padding="4dp"
-                    android:text="Hello"
+
+                    android:id="@+id/nameID"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="26sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/btnViewAll"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/addressID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="address"
-                    android:textColor="@color/black"
-                    android:layout_margin="8dp"
-                    app:layout_constraintTop_toBottomOf="@id/header1"
-                    />
+                    android:layout_margin="12dp"
+                    android:text="address"
+                    app:layout_constraintStart_toStartOf="@+id/nameID"
+                    app:layout_constraintTop_toBottomOf="@id/nameID" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ScrollView
+            android:id="@+id/scrollviewID"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/infoCardID">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/scrollviewID">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchviewid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="12dp"
+                            android:imeOptions="actionSearch"
+                            app:queryHint="Search"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layoutDirection="rtl"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/searchview"
+                        android:src="@drawable/ic_car"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_margin="12dp"
+                        />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/btnViewAll"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/categorytxt"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:drawablePadding="8dp"
-                    android:padding="4dp"
+                    android:layout_margin="12dp"
+                    android:text="Categories"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/header1"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/searchviewid" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:layout_marginVertical="15dp"
+                    android:background="@drawable/gray_rounded_filled20"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/header1"
-                    tools:itemCount="10"
+                    app:layout_constraintTop_toBottomOf="@id/categorytxt"
                     tools:listitem="@layout/item_product" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/container2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/container1">
                 <TextView
-                    android:id="@+id/header2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/popularrowtxt"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:padding="4dp"
-                    android:text="Popular now"
+                    android:layout_margin="12dp"
+                    android:text="Popular row"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView2"
@@ -143,46 +173,31 @@
                     android:layout_marginVertical="16dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/header2"
+                    app:layout_constraintTop_toBottomOf="@id/popularrowtxt"
                     tools:itemCount="10"
                     tools:listitem="@layout/item_product2" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container3"
+
+                <TextView
+                    android:id="@+id/trendingnowtxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/container2">
+                    android:layout_margin="12dp"
+                    android:text="Trending now "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerView2" />
 
-                    <TextView
-                        android:id="@+id/header3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="4dp"
-                        android:text="Tranding now"
-                        android:textColor="@color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="16dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/header3"
-                        tools:itemCount="10"
-                        tools:listitem="@layout/item_product" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/trendingnowtxt"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_product" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

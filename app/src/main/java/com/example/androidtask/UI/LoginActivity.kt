@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-      //  viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
         binding.goSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
@@ -55,19 +55,32 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             is State.Success -> {
-                                if (it.data.response_code ==200){
-                                    Toast.makeText(applicationContext, it.data.message, Toast.LENGTH_SHORT).show()
-                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                if (it.data.response_code == 200) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        it.data.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    val intent =
+                                        Intent(this@LoginActivity, MainActivity::class.java)
+                                            .apply {
+                                                putExtra("token", it.data.data.token)
+                                                putExtra("username", it.data.data.name)
+                                            }
                                     startActivity(intent)
                                     finish()
-                                }
-                                else
-                                    Toast.makeText(this@LoginActivity, it.data.message, Toast.LENGTH_SHORT).show()
-                                Log.d("VisitBranchWithoutPay", "success"+it.data.message)
+                                } else
+                                    Toast.makeText(
+                                        this@LoginActivity,
+                                        it.data.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                          //      Log.d("VisitBranchWithoutPay", "success" + it.data.message)
                             }
 
                             is State.Error -> {
-                                Toast.makeText(this@LoginActivity, it.messag, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@LoginActivity, it.messag, Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                     }
