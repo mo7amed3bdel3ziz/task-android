@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.example.androidtask.business.models.CaregoryItem" />
+            type="com.example.androidtask.data.remote.models.CaregoryItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
